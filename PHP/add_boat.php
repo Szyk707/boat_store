@@ -8,7 +8,6 @@
     // }
 
     $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
-
     $boatModel = $_POST['boatModel'] ?? null;
     $boatPrice = (float) $_POST['boatPrice'] ?? null;
     $boatLength = (float) $_POST['boatLength'] ?? null;
@@ -34,7 +33,7 @@
     } 
     else
     {
-        // header("Location: ./admin_panel.php");
+        header("Location: ./admin_panel.php");
         $_SESSION['submitError'] = "TRZEBA UZUPEŁNIĆ WSZYSTKIE POLA";
     }
 ?>
