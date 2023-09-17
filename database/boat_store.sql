@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Czas generowania: 14 Wrz 2023, 18:21
--- Wersja serwera: 10.4.21-MariaDB
--- Wersja PHP: 8.0.11
+-- Host: localhost
+-- Generation Time: Sep 17, 2023 at 07:19 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `boat_store`
+-- Database: `boat_store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `boats`
+-- Table structure for table `boats`
 --
 
 CREATE TABLE `boats` (
@@ -35,109 +35,143 @@ CREATE TABLE `boats` (
   `height` decimal(10,2) NOT NULL,
   `width` decimal(10,2) NOT NULL,
   `category` varchar(35) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `boats_components`
+-- Table structure for table `boats_components`
 --
 
 CREATE TABLE `boats_components` (
   `boat_id` int(11) NOT NULL,
   `component_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `components`
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `category` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `components`
 --
 
 CREATE TABLE `components` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `price` int(11) NOT NULL,
-  `category` varchar(35) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `images`
+-- Table structure for table `componets_catgories`
+--
+
+CREATE TABLE `componets_catgories` (
+  `component_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
   `boat_id` int(11) NOT NULL,
   `file_path` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `boat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `orders_components`
+-- Table structure for table `orders_components`
 --
 
 CREATE TABLE `orders_components` (
   `order_id` int(11) NOT NULL,
   `component_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(35) NOT NULL,
   `password` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `boats`
+-- Indexes for table `boats`
 --
 ALTER TABLE `boats`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `boats_components`
+-- Indexes for table `boats_components`
 --
 ALTER TABLE `boats_components`
   ADD KEY `bc_boats` (`boat_id`),
   ADD KEY `bc_components` (`component_id`);
 
 --
--- Indeksy dla tabeli `components`
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `components`
 --
 ALTER TABLE `components`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `images`
+-- Indexes for table `componets_catgories`
+--
+ALTER TABLE `componets_catgories`
+  ADD KEY `cc_categories` (`category_id`),
+  ADD KEY `cc_components` (`component_id`);
+
+--
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD KEY `image_boat` (`boat_id`);
 
 --
--- Indeksy dla tabeli `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
@@ -145,73 +179,86 @@ ALTER TABLE `orders`
   ADD KEY `order_boats` (`boat_id`);
 
 --
--- Indeksy dla tabeli `orders_components`
+-- Indexes for table `orders_components`
 --
 ALTER TABLE `orders_components`
   ADD KEY `oc_orders` (`order_id`),
   ADD KEY `oc_components` (`component_id`);
 
 --
--- Indeksy dla tabeli `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT dla zrzuconych tabel
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT dla tabeli `boats`
+-- AUTO_INCREMENT for table `boats`
 --
 ALTER TABLE `boats`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `components`
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `components`
 --
 ALTER TABLE `components`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Ograniczenia dla zrzutów tabel
+-- Constraints for dumped tables
 --
 
 --
--- Ograniczenia dla tabeli `boats_components`
+-- Constraints for table `boats_components`
 --
 ALTER TABLE `boats_components`
   ADD CONSTRAINT `bc_boats` FOREIGN KEY (`boat_id`) REFERENCES `boats` (`id`),
   ADD CONSTRAINT `bc_components` FOREIGN KEY (`component_id`) REFERENCES `components` (`id`);
 
 --
--- Ograniczenia dla tabeli `images`
+-- Constraints for table `componets_catgories`
+--
+ALTER TABLE `componets_catgories`
+  ADD CONSTRAINT `cc_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `cc_components` FOREIGN KEY (`component_id`) REFERENCES `components` (`id`);
+
+--
+-- Constraints for table `images`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `image_boat` FOREIGN KEY (`boat_id`) REFERENCES `boats` (`id`);
 
 --
--- Ograniczenia dla tabeli `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `order_boats` FOREIGN KEY (`boat_id`) REFERENCES `boats` (`id`),
   ADD CONSTRAINT `orders_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Ograniczenia dla tabeli `orders_components`
+-- Constraints for table `orders_components`
 --
 ALTER TABLE `orders_components`
   ADD CONSTRAINT `oc_components` FOREIGN KEY (`component_id`) REFERENCES `components` (`id`),

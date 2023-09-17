@@ -58,6 +58,26 @@
                 <input type="submit" value="Dodaj">
             </div>
         </form>
+        <form action="add_component.php" method="post">
+            <h2>Dodaj Komponent</h2>
+            <div>
+                <label for="componentName">Nazwa</label>
+                <input type="text" name="componentName" id="componentName">
+            </div>
+            <div>
+                <label for="componentPrice">Cena</label>
+                <input type="text" name="componentPrice" id="componentPrice">
+            </div>
+            <div>
+                <label for="componentCategory">Kategoria</label>
+                <br>
+                <label for="engine">Silnik</label>
+                <input type="checkbox" name="componentCategory" id="engine" value="engine">
+            </div>
+            <div>
+                <input type="submit" value="Dodaj">
+            </div>
+        </form>
     </div>
 </body>
 </html>

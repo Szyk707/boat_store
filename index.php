@@ -10,6 +10,6 @@
     <h1>lodzie</h1>
 
     <!-- Dałem, żeby nie wpisywać za każdym razem -->
-    <a href="./admin_panel.php">ADMIN</a>
+    <a href="./PHP/admin_panel.php">ADMIN</a>
 </body>
 </html>
