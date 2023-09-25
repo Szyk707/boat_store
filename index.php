@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sail">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,7 +24,7 @@
 
     <div class="nav">
         <img src="images/captain.png" alt="captain" class="logo">
-        <p class="title">Boat store</p>
+        <span class="title">Boat store</span>
 
         <div class="navbar">
             <form action="post" class="search">
@@ -53,6 +55,42 @@
         <div class="middle">
             
             <div class="boats">
+
+                <div class="boat_card">
+                    <h4>Boat_title</h4>
+                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
+                    <p>Price: 1.99$</p>
+                    <p>Engine: Thomas the tank</p>
+                    <p>Mini-cooler: yes sir!</p>
+                </div>
+                <div class="boat_card">
+                    <h4>Boat_title</h4>
+                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
+                    <p>Price: 1.99$</p>
+                    <p>Engine: Thomas the tank</p>
+                    <p>Mini-cooler: yes sir!</p>
+                </div>
+                <div class="boat_card">
+                    <h4>Boat_title</h4>
+                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
+                    <p>Price: 1.99$</p>
+                    <p>Engine: Thomas the tank</p>
+                    <p>Mini-cooler: yes sir!</p>
+                </div>
+                <div class="boat_card">
+                    <h4>Boat_title</h4>
+                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
+                    <p>Price: 1.99$</p>
+                    <p>Engine: Thomas the tank</p>
+                    <p>Mini-cooler: yes sir!</p>
+                </div>
+                <div class="boat_card">
+                    <h4>Boat_title</h4>
+                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
+                    <p>Price: 1.99$</p>
+                    <p>Engine: Thomas the tank</p>
+                    <p>Mini-cooler: yes sir!</p>
+                </div>
                 <p>rqgagaq</p>
                 <p>egegega</p>
                 <p>gqrgqegrq</p>
@@ -77,8 +115,48 @@
 
 
             <div class="about_us" id="about_us">
-                <h3>About us</h3>
-                <img src="images/about_us.png" alt="" class="about_us_boat">
+                <div class="main">
+                    <h3>About us</h3>
+                    <img src="images/about_us.png" alt="" class="about_us_boat">
+                    <span class="about_us_description">1 Even though you're alone, value other people in your life. ...
+                        2 Be in touch with your own power. ...
+                        3 Be a silent leader. ...
+                        4 Know how to adapt to new situations. ...
+                        5 Treat everyone the same way. ...
+                        6 Be yourself, even without a social circle. ...
+                        7 Understand the importance of silence.</span>
+                </div>
+                <div class="olek">
+                    <h3>Aleksander Michalski</h3>
+                    <span class="olek_description">1 Even though you're alone, value other people in your life. ...
+                        2 Be in touch with your own power. ...
+                        3 Be a silent leader. ...
+                        4 Know how to adapt to new situations. ...
+                        5 Treat everyone the same way. ...
+                        6 Be yourself, even without a social circle. ...
+                        7 Understand the importance of silence.</span>
+                    <img src="images/rob.png" alt="" class="rob">
+                </div>
+                <div class="szymon">
+                    <h3>Szymon Kołbus</h3>
+                    <img src="images/ryan.png" alt="" class="ryan">
+                    <span class="szymon_description">1 Even though you're alone, value other people in your life. ...
+                        2 Be in touch with your own power. ...
+                        3 Be a silent leader. ...
+                        4 Know how to adapt to new situations. ...
+                        5 Treat everyone the same way. ...
+                        6 Be yourself, even without a social circle. ...
+                        7 Understand the importance of silence.</span>
+                </div>
+
+                    
+            </div>
+            
+
+
+            <div class="footer">
+                <!-- Dałem, żeby nie wpisywać za każdym razem -->
+                <a href="./PHP/admin_panel.php">ADMIN</a>
             </div>
             
         </div>
@@ -86,10 +164,6 @@
 
 
 
-    <div class="footer">
-        <!-- Dałem, żeby nie wpisywać za każdym razem -->
-        <a href="./PHP/admin_panel.php">ADMIN</a>
-    </div>
 </body>
 </html>
 </body>
