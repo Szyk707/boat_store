@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 17, 2023 at 07:19 PM
+-- Host: 127.0.0.1
+-- Generation Time: Sep 26, 2023 at 10:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,8 +34,18 @@ CREATE TABLE `boats` (
   `length` decimal(10,2) NOT NULL,
   `height` decimal(10,2) NOT NULL,
   `width` decimal(10,2) NOT NULL,
-  `category` varchar(35) NOT NULL
+  `category` varchar(35) NOT NULL,
+  `engine` varchar(100) NOT NULL,
+  `horse_power` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `boats`
+--
+
+INSERT INTO `boats` (`id`, `model`, `price`, `length`, `height`, `width`, `category`, `engine`, `horse_power`) VALUES
+(1, 'Regal 2450', 115000, 8.00, 2.00, 4.00, 'engine_boat', 'super mega silnik', 200),
+(2, 'OPEN - Celestic S21', 99000, 5.92, 1.90, 2.49, 'engine_boat', 'niesuper silnik', 20);
 
 -- --------------------------------------------------------
 
@@ -92,6 +102,14 @@ CREATE TABLE `images` (
   `boat_id` int(11) NOT NULL,
   `file_path` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`boat_id`, `file_path`) VALUES
+(1, './images/rand_boat.png'),
+(2, './images/ryan.png');
 
 -- --------------------------------------------------------
 
@@ -200,7 +218,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `boats`
 --
 ALTER TABLE `boats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `categories`
