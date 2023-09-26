@@ -30,19 +30,27 @@
             </div>
             <div>
                 <label for="boatPrice">Cena Łodzi</label>
-                <input type="text" name="boatPrice" id="boatPrice" pattern="^\d*(\.\d{0,2})?$">
+                <input type="text" name="boatPrice" id="boatPrice" pattern="\d*(\.\d{0,2})?$">
             </div>
             <div>
                 <label for="boatLength">Długość Łodzi</label>
-                <input type="text" name="boatLength" id="boatLength" pattern="^\d*(\.\d{0,2})?$">
+                <input type="text" name="boatLength" id="boatLength" pattern="\d*(\.\d{0,2})?$">
             </div>
             <div>
                 <label for="boatWidth">Szerokość Łodzi</label>
-                <input type="text" name="boatWidth" id="boatWidth" pattern="^\d*(\.\d{0,2})?$">
+                <input type="text" name="boatWidth" id="boatWidth" pattern="\d*(\.\d{0,2})?$">
             </div>
             <div>
                 <label for="boatHeight">Wysokość Łodzi</label>
-                <input type="text" name="boatHeight" id="boatHeight" pattern="^\d*(\.\d{0,2})?$">
+                <input type="text" name="boatHeight" id="boatHeight" pattern="\d*(\.\d{0,2})?$">
+            </div>
+            <div>
+                <label for="boatEngine">Silnik</label>
+                <input type="text" name="boatEngine" id="boatEngine">
+            </div>
+            <div>
+                <label for="horsePower">Moc Silnika</label>
+                <input type="text" name="horsePower" id="horsePower" pattern="\d*">
             </div>
             <div>
                 <label for="boatCategory">Rodzaj Łodzi</label>
@@ -78,6 +86,9 @@
                 <input type="submit" value="Dodaj">
             </div>
         </form>
+        <div>
+            <a href="../index.php">WRÓĆ</a>
+        </div>
     </div>
 </body>
 </html>

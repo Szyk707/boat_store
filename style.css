@@ -105,6 +105,7 @@ h4 {margin: 0; margin-left: 0.5em;}
     height: 100%;
     margin-top: 8vh;
     background-color: #2f3e46;
+    border-radius: 10px;
 }
 
 .boat_card {

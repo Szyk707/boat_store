@@ -9,20 +9,22 @@
 
     $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
     
-    $boatModel = $_POST['boatModel'] ?? null;
-    $boatPrice = (float) $_POST['boatPrice'] ?? null;
-    $boatLength = (float) $_POST['boatLength'] ?? null;
-    $boatHeight = (float) $_POST['boatHeight'] ?? null;
-    $boatWidth = (float) $_POST['boatWidth'] ?? null;
+    $boatModel = $_POST['boatModel'] ?? "";
+    $boatPrice = (float) $_POST['boatPrice'] ?? "";
+    $boatLength = (float) $_POST['boatLength'] ?? "";
+    $boatHeight = (float) $_POST['boatHeight'] ?? "";
+    $boatWidth = (float) $_POST['boatWidth'] ?? "";
+    $boatEngine = $_POST['boatEngine'] ?? "";
+    $horsePower = (int) $_POST['horsePower'] ?? "";
     $boatCategory = $_POST['boatCategory'] ?? null;
 
-    var_dump( get_defined_vars() );
-    // Wszystko ma być uzupełnione, żeby wstawić nową łódź
-    if($boatModel !== null &&
-        $boatPrice !== null && 
-        $boatLength !== null && 
-        $boatWidth !== null && 
-        $boatHeight !== null &&
+    if($boatModel !== "" &&
+        $boatPrice !== "" && 
+        $boatLength !== "" && 
+        $boatWidth !== "" && 
+        $boatHeight !== "" &&
+        $boatEngine !== "" &&
+        $horsePower !== "" &&
         $boatCategory !== null
      )
     {

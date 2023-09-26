@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
+
+    $stmt = $db -> query("SELECT * FROM boats");
+    $boats = $stmt -> fetchAll();
+
+    $stmt2 = $db -> query("SELECT file_path FROM images, boats WHERE boat_id = boats.id");
+    $images = $stmt2 -> fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,62 +66,17 @@
         <div class="middle">
             
             <div class="boats">
-
-                <div class="boat_card">
-                    <h4>Boat_title</h4>
-                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
-                    <p>Price: 1.99$</p>
-                    <p>Engine: Thomas the tank</p>
-                    <p>Mini-cooler: yes sir!</p>
-                </div>
-                <div class="boat_card">
-                    <h4>Boat_title</h4>
-                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
-                    <p>Price: 1.99$</p>
-                    <p>Engine: Thomas the tank</p>
-                    <p>Mini-cooler: yes sir!</p>
-                </div>
-                <div class="boat_card">
-                    <h4>Boat_title</h4>
-                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
-                    <p>Price: 1.99$</p>
-                    <p>Engine: Thomas the tank</p>
-                    <p>Mini-cooler: yes sir!</p>
-                </div>
-                <div class="boat_card">
-                    <h4>Boat_title</h4>
-                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
-                    <p>Price: 1.99$</p>
-                    <p>Engine: Thomas the tank</p>
-                    <p>Mini-cooler: yes sir!</p>
-                </div>
-                <div class="boat_card">
-                    <h4>Boat_title</h4>
-                    <img src="images/rand_boat.png" alt="" class="boat_card_img">
-                    <p>Price: 1.99$</p>
-                    <p>Engine: Thomas the tank</p>
-                    <p>Mini-cooler: yes sir!</p>
-                </div>
-                <p>rqgagaq</p>
-                <p>egegega</p>
-                <p>gqrgqegrq</p>
-                <p>grghtrj</p>
-                <p>e5je</p>
-                <p>rqgagaq</p>
-                <p>egegega</p>
-                <p>gqrgqegrq</p>
-                <p>grghtrj</p>
-                <p>e5je</p>
-                <p>rqgagaq</p>
-                <p>egegega</p>
-                <p>gqrgqegrq</p>
-                <p>grghtrj</p>
-                <p>e5je</p>
-                <p>rqgagaq</p>
-                <p>egegega</p>
-                <p>gqrgqegrq</p>
-                <p>grghtrj</p>
-                <p>e5je</p>
+                <?php foreach($boats as $index => $b): ?>
+                    <a href="./PHP/boat.php?id=<?= $b['id'] ?>" class="boat_card">
+                        <div>
+                            <h4><?= $b['model'] ?></h4>
+                            <img src="<?= $images[0]['file_path'] ?>" alt="łódź" class="boat_card_img">
+                            <p>Cena: <?= $b['price'] ?></p>
+                            <p>Silnik: <?= $b['engine'] ?></p>
+                            <p>Moc Silnika: <?= $b['horse_power'] ?></p>
+                        </div>
+                    </a>                
+                <?php endforeach; ?>
             </div>
 
 
