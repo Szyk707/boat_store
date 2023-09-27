@@ -1,4 +1,6 @@
-
+* {
+    margin: 0;
+}
 
 html {
     height: 100%;
@@ -11,9 +13,26 @@ body {
     width: 100%;
 }
 
-p {width: 100%; margin-bottom: 0.5em; font-weight: bold; margin-left: 0.5em;}
+.boat_info_parent {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
 
-h4 {margin: 0; margin-left: 0.5em;}
+.boat_info {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 0.5em; 
+    font-weight: bold; 
+    font-size: 1.2vw;
+    
+}
+
+h4 {
+    margin: 0; 
+    margin-left: 0.5em;
+    padding: 0.3em;
+    font-size: 1.7vw;
+}
 
 .nav { 
     position: fixed;
@@ -113,9 +132,12 @@ h4 {margin: 0; margin-left: 0.5em;}
     flex-wrap: wrap;
     background-color: white;
     width: 30%;
-    height: 40vh;
+    min-height: 40vh;
+    max-height: 50vh;
     margin: 1.5%;
     border-radius: 3%;
+    text-decoration: none;
+    color: black;
 }
 
 .boat_card:hover {
@@ -163,13 +185,20 @@ h3 {
     width: 40%;
 }
 
-.about_us_description, .olek_description, .szymon_description {
+.about_us_description {
     float: right;
     color: white;
     width: 50%;
     margin-left: 1em;
 }
-.szymon_description {width: 40%; }
+
+.description {
+    float: right;
+    color: white;
+    width: 50%;
+    padding: 2em
+
+}
 
 .olek, .szymon {
     display: flex;
@@ -179,21 +208,35 @@ h3 {
     background-color: #2f3e46;
 }
 
+.full_name_right {
+    text-align: end;
+    padding-right: 8.5rem;
+}
+
+.full_name_left {
+    text-align: start;
+    padding-left: 7.7rem;
+}
+
 .rob {
     object-fit: scale-down;
     float: right;
-    margin-left: 1em ;
-    width: 40%;
-    height: 60vh;
+    margin-left: 10vw ;
+    width: 15vw;
+    height: auto;
+    border: solid 2px rgb(91, 152, 245);
+    border-radius: 5px;
 }
 
 
 .ryan {
     object-fit: scale-down;
     float: left;
-    margin-left: 1em ;
-    width: 55%;
-    height: 50vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    width: 15vw;
+    border: solid 2px rgb(91, 152, 245);
+    border-radius: 5px;
 }
 
 .footer {
