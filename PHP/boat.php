@@ -55,18 +55,6 @@
             <p>Skontaktuj się z nami</p>
         </div>
 
-    </div>
-
-
-
-    
-
-        <!-- <div>
-            <h4><?= $boat[0]['model'] ?></h4>
-            <img src="<?= $img[0]['file_path'] ?>" alt="lodz">
-            <p><?= $boat[0]['price'] ?></p>
-        </div> -->
-    
-
+    </div>  
 </body>
 </html>

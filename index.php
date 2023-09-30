@@ -3,8 +3,22 @@
 
     $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
 
-    $stmt = $db -> query("SELECT * FROM boats");
-    $boats = $stmt -> fetchAll();
+    $search = $_GET['search'] ?? null;
+
+    $length = $_POST['length'] ?? [0, 100];
+
+    if($search !== null) 
+    {
+        $stmt = $db -> query("  SELECT * FROM boats 
+                                WHERE boats.model LIKE '%%'
+                                AND boats.length BETWEEN '$length[0]' AND '$length[1]'");
+        $boats = $stmt -> fetchAll();
+    }
+    else 
+    {
+        $stmt = $db -> query("SELECT * FROM boats");
+        $boats = $stmt -> fetchAll();
+    }
 
     $stmt2 = $db -> query("SELECT file_path FROM images, boats WHERE boat_id = boats.id");
     $images = $stmt2 -> fetchAll();
@@ -26,6 +40,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sail">
     <link rel="stylesheet" href="style.css">
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
+
 </head>
 <body>
 
@@ -36,8 +56,9 @@
         <span class="title">Boat store</span>
 
         <div class="navbar">
-            <form action="post" class="search">
-                <input type="text" name="search" class="search_input" placeholder="Search..">
+            <form action="" method="get" class="search">
+                <input type="text" name="search" id="search" class="search_input" placeholder="Search..">
+                <button type="submit" class="search_icon"><img src="./images/search_icon.svg" alt="search"></button>
             </form>
             <a href="#about_us" class="menu">About us</a>
             <a href="" class="menu">Contact</a>
@@ -51,12 +72,32 @@
     <div class="content">
         
         <div class="side_bar">
-            <h4>Filter the boats you love</h4>
-            <form action="post">
-
-
-
-
+            <h4>Filters</h4>
+            <form action="" method="post" class="">
+                <div>
+                    <label for="length">Długość</label>
+                    <label>
+                        Do 5m
+                        <input type="checkbox" name="length" value="<?php $lengthList[0, 5] ?>">
+                    </label>
+                    <label>
+                        od 5m do 10m
+                        <input type="checkbox" name="length" value=">= 5 <= 10">
+                    </label>
+                    <label>
+                        od 10m do 15m
+                        <input type="checkbox" name="length" value=">= 10 <= 15">
+                    </label>
+                    <label>
+                        od 15m do 20m
+                        <input type="checkbox" name="length" value="15 20">
+                    </label>
+                    <label>
+                        Ponad 20m
+                        <input type="checkbox" name="length" value=">= 20">
+                    </label>
+                </div>
+                <input type="submit" value="Zastosuj">
             </form>
         </div>
 
@@ -70,7 +111,7 @@
                             <h4><?= $b['model'] ?></h4>
                             <img src="<?= $images[0]['file_path'] ?>" alt="łódź" class="boat_card_img">
                             <div class="boat_info_parent">
-                                <span class="boat_info">Cena: </span><span class="boat_info"><?= $b['price'] ?></span>
+                                <span class="boat_info">Cena: </span><span class="boat_info"><?= $b['price'] ?> zł</span>
                                 <span class="boat_info">Silnik: </span><span class="boat_info"><?= $b['engine'] ?></span>
                                 <span class="boat_info">Moc Silnika: </span class="boat_info"><span class="boat_info"><?= $b['horse_power'] ?> KM</span>
                             </div>
