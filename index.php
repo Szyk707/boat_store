@@ -10,8 +10,7 @@
     if($search !== null) 
     {
         $stmt = $db -> query("  SELECT * FROM boats 
-                                WHERE boats.model LIKE '%%'
-                                AND boats.length BETWEEN '$length[0]' AND '$length[1]'");
+                                WHERE boats.model LIKE '%".$search."%'");
         $boats = $stmt -> fetchAll();
     }
     else 
@@ -78,23 +77,23 @@
                     <label for="length">Długość</label>
                     <label>
                         Do 5m
-                        <input type="checkbox" name="length" value="<?php $lengthList[0, 5] ?>">
+                        <input type="checkbox" name="length[]" value=<?php [0, 5] ?>>
                     </label>
                     <label>
                         od 5m do 10m
-                        <input type="checkbox" name="length" value=">= 5 <= 10">
+                        <input type="checkbox" name="length[]" value=">= 5 <= 10">
                     </label>
                     <label>
                         od 10m do 15m
-                        <input type="checkbox" name="length" value=">= 10 <= 15">
+                        <input type="checkbox" name="length[]" value=">= 10 <= 15">
                     </label>
                     <label>
                         od 15m do 20m
-                        <input type="checkbox" name="length" value="15 20">
+                        <input type="checkbox" name="length[]" value="15 20">
                     </label>
                     <label>
                         Ponad 20m
-                        <input type="checkbox" name="length" value=">= 20">
+                        <input type="checkbox" name="length[]" value=">= 20">
                     </label>
                 </div>
                 <input type="submit" value="Zastosuj">
