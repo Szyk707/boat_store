@@ -5,12 +5,13 @@
 
     $search = $_GET['search'] ?? null;
 
-    $length = $_POST['length'] ?? [0, 100];
+    $length = $_POST['length[]'] ?? [0, 100];
 
     if($search !== null) 
     {
         $stmt = $db -> query("  SELECT * FROM boats 
-                                WHERE boats.model LIKE '%".$search."%'");
+                                WHERE boats.model LIKE '{$search}%'
+                                AND boats.length BETWEEN {$length[0]} AND {$length[1]}");
         $boats = $stmt -> fetchAll();
     }
     else 
@@ -18,19 +19,7 @@
         $stmt = $db -> query("SELECT * FROM boats");
         $boats = $stmt -> fetchAll();
     }
-
-    $stmt2 = $db -> query("SELECT file_path FROM images, boats WHERE boat_id = boats.id");
-    $images = $stmt2 -> fetchAll();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,18 +41,17 @@
 
     <div class="nav">
         <img src="images/captain.png" alt="captain" class="logo">
-        <span class="title">Boat store</span>
+        <a href="index.php" class="title">Boat Store</a>
 
         <div class="navbar">
             <form action="" method="get" class="search">
-                <input type="text" name="search" id="search" class="search_input" placeholder="Search..">
+                <input type="text" name="search" id="search" class="search_input" placeholder="Wyszukaj...">
                 <button type="submit" class="search_icon"><img src="./images/search_icon.svg" alt="search"></button>
             </form>
-            <a href="#about_us" class="menu">About us</a>
-            <a href="" class="menu">Contact</a>
-            <a href="" class="menu">Log in</a>
+            <a href="#about_us" class="menu">O nas</a>
+            <a href="" class="menu">Kontakt</a>
+            <a href="" class="menu">Zaloguj</a>
         </div>
-
     </div>
 
 
@@ -74,26 +62,27 @@
             <h4>Filters</h4>
             <form action="" method="post" class="">
                 <div>
+                    <?= $length[0], $length[1] ?>
                     <label for="length">Długość</label>
                     <label>
                         Do 5m
-                        <input type="checkbox" name="length[]" value=<?php [0, 5] ?>>
+                        <input type="checkbox" name="length[]" value="0,5">
                     </label>
                     <label>
                         od 5m do 10m
-                        <input type="checkbox" name="length[]" value=">= 5 <= 10">
+                        <input type="checkbox" name="length[]" value="5,10">
                     </label>
                     <label>
                         od 10m do 15m
-                        <input type="checkbox" name="length[]" value=">= 10 <= 15">
+                        <input type="checkbox" name="length[]" value="10,15">
                     </label>
                     <label>
                         od 15m do 20m
-                        <input type="checkbox" name="length[]" value="15 20">
+                        <input type="checkbox" name="length[]" value="15,20">
                     </label>
                     <label>
                         Ponad 20m
-                        <input type="checkbox" name="length[]" value=">= 20">
+                        <input type="checkbox" name="length[]" value="20,100">
                     </label>
                 </div>
                 <input type="submit" value="Zastosuj">
@@ -108,7 +97,7 @@
                     <a href="./PHP/boat.php?id=<?= $b['id'] ?>" class="boat_card">
                         <div>
                             <h4><?= $b['model'] ?></h4>
-                            <img src="<?= $images[0]['file_path'] ?>" alt="łódź" class="boat_card_img">
+                            <img src="<?= $b['main_img_path'] ?>" alt="łódź" class="boat_card_img">
                             <div class="boat_info_parent">
                                 <span class="boat_info">Cena: </span><span class="boat_info"><?= $b['price'] ?> zł</span>
                                 <span class="boat_info">Silnik: </span><span class="boat_info"><?= $b['engine'] ?></span>
@@ -167,10 +156,5 @@
             
         </div>
     </div>
-
-
-
-</body>
-</html>
 </body>
 </html>
