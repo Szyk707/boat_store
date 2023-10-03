@@ -43,27 +43,57 @@
     <div class="middle">
 
         <h4><?= $boat['model'] ?></h4>
-        <img src="<?= $img[0]['file_path'] ?>" class="boat_img" id="boat_img" alt="">
-        <ul>
-            <?php foreach($img as $i): ?>
-                <li id="small_img">
-                    <button data-src="<?= $i['file_path']?>" class="small_btn">
-                        <img src="<?= $i['file_path'] ?>" alt="obrazek" class="small_img">
-                    </button>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-        <div class="stats">
-            <p><span class="boat_info">Cena: </span><span class="boat_info"><?= $boat['price'] ?> zł</span></p>
-            <p><span class="boat_info">Silnik: </span><span class="boat_info"><?= $boat['engine'] ?></span></p>
-            <p><span class="boat_info">Moc Silnika: </span class="boat_info"><span class="boat_info"><?= $boat['horse_power'] ?> KM</span></p>
+        <div class="middle margin0">
+            <img src="<?= $img[0]['file_path'] ?>" class="boat_img margin0" id="boat_img" alt="">
+            <ul>
+                <?php foreach($img as $i): ?>
+                    <li id="small_img">
+                        <button data-src="<?= $i['file_path']?>" class="small_btn">
+                            <img src="<?= $i['file_path'] ?>" alt="obrazek" class="small_img">
+                        </button>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
-                
+        <div>
+            <a href="#description" class="quick_scroll">Opis</a>
+            <a href="#specification" class="quick_scroll">Specyfikacja</a>
+        </div>
+        <div class="description">
+            <h3  id="description">OPIS</h3>
+            <p class="desc"><?= $boat['description'] ?></p>
+        </div>
+        <div class="stats" id="specification">
+            <h3 id="specification">SPECYFIKACJA</h3>
+            <div class="boat_info_seg">
+                <span class="boat_info b">Cena: </span>
+                <span class="boat_info"><?= $boat['price'] ?> zł</span>
+            </div>
+            <div class="boat_info_seg">
+                <span class="boat_info b">Silnik: </span>
+                <span class="boat_info"><?= $boat['engine'] ?></span>
+            </div>
+            <div class="boat_info_seg">
+                <span class="boat_info b">Moc Silnika: </span>
+                <span class="boat_info"><?= $boat['horse_power'] ?> KM</span>
+            </div> 
+            <div class="boat_info_seg">
+                <span class="boat_info b">Długość: </span>
+                <span class="boat_info"><?= $boat['length'] ?>m</span>
+            </div> 
+            <div class="boat_info_seg">
+                <span class="boat_info b">Szerokość: </span>
+                <span class="boat_info"><?= $boat['width'] ?>m</span>
+            </div>
+            <div class="boat_info_seg">
+                <span class="boat_info b">Wysokość: </span>
+                <span class="boat_info"><?= $boat['height'] ?>m</span>
+            </div>
+        </div>
                 
         <div class="footer">
             <p>Skontaktuj się z nami</p>
         </div>
-        <?= var_dump($img) ?>
     </div>  
 </body>
 </html>

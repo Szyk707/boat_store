@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2023 at 02:20 PM
+-- Generation Time: Oct 03, 2023 at 09:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -30,23 +30,26 @@ SET time_zone = "+00:00";
 CREATE TABLE `boats` (
   `id` int(11) NOT NULL,
   `model` varchar(50) NOT NULL,
+  `production_year` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `length` decimal(10,2) NOT NULL,
   `height` decimal(10,2) NOT NULL,
   `width` decimal(10,2) NOT NULL,
-  `category` varchar(35) NOT NULL,
+  `category` enum('engine_boat','rowing_boat','sailing_boat') NOT NULL,
   `engine` varchar(100) NOT NULL,
+  `fuel_type` enum('electric','diesel','gas','other') NOT NULL,
   `horse_power` int(11) NOT NULL,
-  `main_img_path` varchar(50) NOT NULL
+  `main_img_path` varchar(50) NOT NULL,
+  `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `boats`
 --
 
-INSERT INTO `boats` (`id`, `model`, `price`, `length`, `height`, `width`, `category`, `engine`, `horse_power`, `main_img_path`) VALUES
-(1, 'Regal 2450', 115000, 11.00, 2.00, 4.00, 'engine_boat', 'super mega silnik', 200, './images/rand_boat.png'),
-(2, 'OPEN - Celestic S21', 99000, 5.92, 1.90, 2.49, 'engine_boat', 'niesuper silnik', 20, './images/ryan.png');
+INSERT INTO `boats` (`id`, `model`, `production_year`, `price`, `length`, `height`, `width`, `category`, `engine`, `fuel_type`, `horse_power`, `main_img_path`, `description`) VALUES
+(1, 'Regal 2450', 0, 115000, 11.00, 2.00, 4.00, 'engine_boat', 'super mega silnik', 'electric', 200, './images/rand_boat.png', '2023 Pischel Ribline 8.5 GTO Cabin Nighthawk\r\n8.5 GTO Cabin Nighthawk\r\n\r\n(inkl. Motoren FL200 XB EFI & F200 XB EFI, je 147,1 KW/ 200 PS)\r\n\r\nAuf Wunsch weitere Motorisierung lieferbar.\r\n\r\nVerkürzte Lieferzeit, Boot ist in der Fertigung!\r\n\r\nWir haben äußersten Wert auf die Funktionalität gelegt und trotzdem den Spagat geschafft das Design in seiner kompromisslosen Form nicht verändern zu müssen. Somit stehen Design und Funktionalität in Harmonie. Der GFK-Bug beherbergt die Standard-Ankerwinde ohne dem Innenraum Länge zu nehmen. Breite Durchgänge neben der Steuerkonsole gewährleisten ein Maximum an Trittsicherheit auch bei rauer See. Doppelte Heavy Duty Fenderleisten schützen den handgefertigten Schlauchkörper.\r\n\r\nDie Badeplattformen des Pischel Ribline 8.5 GTO Cabin sorgen für maximale Bewegungssicherheit bei Heckliegern in der Marin, genauso wie der bugseitige Tritt, der mit maximaler Trittfläche ausgeführt wurde. Unter dem Fahrersitz befindet sich die Pantry mit Waschbecken, den ca. 85L fassendem Kompressor Kühlschrank und den optionalen Gasherd. Die Duscharmatur befindet sich bei der Badeplattform. Die Sitzbank des Fahrers lässt sich mit zwei Handgriffen zu einem Leaningpost verwandeln. Die Außenpolster sind mit wasserdichten Multi-PU Schaumkernen versehen. Das bewirkt einen erhöhten Sitzkomfort auch bei längeren Etappen. Auf Kundenwunsch wird das Pischel Ribline 8.5 GTO Cabin optional mit T Top oder Geräteträger und bei Bedarf mit Sonnensegel versehen. In der Nighthawk Edition dominieren (siehe Bilder) die Farbe Schwarz und Grafitgrau. (Standardfarbe weiß). Die Edition verfügt über handgefertigte Silvertex Lakritz-Black Strukturpolster und Rosch Teil-Deck in Black. Das Pischel Ribline 8.5 GTO Cabin besticht nicht nur durch seine äußeren Werte. Dieser martialisch anmutende Offshore Bolide wurde mit außerordentlichen Rauwasser Genen versehen. Sein patentiertes Super Deep V sucht seines Gleichen. Bei unseren Testfahrten rund um Sardinien, waren auch Sturm (*) mit hohen Wellen kein Hindernis. Es fuhr jederzeit sicher, zügig und komfortabel. Der 425 L Treibstofftank sorgt für eine außerordentlich hohe Reichweite.\r\n\r\nDie Kabine wird individuell nach Kundenwunsch gestaltet. Hier zu sehen, die offene Lounge Version mit integriertem WC unter der Steuerbord Sitzfläche. Die große Liegefläche hat einen wesentlichen Vorteil in dieser Klasse. Sie ist von beiden Seiten zu nutzen, da Sie horizontal ausgelegt ist. Das heißt einer bequemen Nacht zu zweit steht nichts im Wege. Eine indirekte LED Ambient Beleuchtung mit Fernbedienung gehört zum Standard.\r\n\r\nNur hochwertigste und feinste Polsterstoffe aus dem Yacht Bau haben wir für die Wandpanel und Sitzmöbel Polsterung ausgewählt.\r\n\r\nUnter der Polsterliege befinden sich zwei große Stauboxen. Bordnetzkontrolle und die Radiobedienung befindet sich im Eingangsbereich innerhalb der Kabine. Optional liefern wir einen Toilettenraum mit Tür auf Steuerbord. Der Loungedivan entfällt dabei. Durch das serienmäßige Zusatzkissen lässt sich die Liegeverlängerung des Loungedivan zu einer ebenen Sitzfläche umwandeln. (*Nicht bildlich dargestellt).\r\n\r\n•••TECHNISCHE SPEZIFIKATIONEN:\r\n\r\nRibline 8.5 GTO CABIN\r\n\"NIGHTHAWK\"\r\nDeep V Composite Rumpf,\r\nOrca Hypalon Bootshaut, Antirutsch Top Schlauch,\r\n2 GTO Fenderleisten\r\nJe 2 Bugseitige Griffschlaufen auf dem Schlauch neben der\r\nPolsterliege\r\nKonsolen Haltereelingen Scheibe, Sportlenkrad,\r\nNiedergang in die Kabine\r\nLiege innerhalb der Kabine, teils bepolsterte Seitenwände\r\nLoungedivan innerhalb der Kabine\r\nLED Ambientebeleuchtung am Kabinenkopf\r\ninkl. Toilettenvorbereitung, Deckenled\r\nTwin Leaningpost mit fix montiertem Polster\r\nPantry mit Waschbecken und Pultled und 2x Plichtled, 12v\r\nSteckdose\r\nSitzgruppe achtern mit Teaktisch\r\nPolsterliege Bugseits\r\nGFK Ankerdavit Bug mit Inox Rolle & festen Belegklampen,\r\nGFK Tritte achtern & festen Belegklampen\r\nEinbautank 455 L aus Edelstahl , Tankgeber,\r\nDusche mit 70L Wassertank\r\nGFK Badeplattformen mit Teleskopbadeleiter\r\n1 große Lenzpumpe achtern,\r\nTurbomax Kompressor,\r\nMit Motor:\r\n\r\n2x\r\n\r\nFL200 FETX EFI\r\n\r\nF(L) 200 XB EFI, 147,1 KW/ 200 PS\r\n\r\nAuf Wunsch mit weiteren Details & gegen Aufpreis lieferbar! Wir beraten Sie dazu gerne persönlich. Nehmen Sie Kontakt zu uns auf.'),
+(2, 'OPEN - Celestic S21', 0, 99000, 5.92, 1.90, 2.49, 'engine_boat', 'niesuper silnik', 'gas', 20, './images/ryan.png', '');
 
 -- --------------------------------------------------------
 
@@ -110,7 +113,7 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`boat_id`, `file_path`) VALUES
 (1, '../images/rand_boat.png'),
-(2, './images/ryan.png'),
+(2, '../images/ryan.png'),
 (1, '../images/ryan.png');
 
 -- --------------------------------------------------------

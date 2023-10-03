@@ -7,18 +7,30 @@
 
     $search = $_GET['search'] ?? null;
 
-    $length = $_POST['length[]'] ?? [0, 100];
+    (!empty($_POST['minLength'])) ? $minLength = $_POST['minLength'] : $minLength = 0;
+    (!empty($_POST['maxLength'])) ? $maxLength = $_POST['maxLength'] : $maxLength = 1_000;
+
+    (!empty($_POST['minPrice'])) ? $minPrice = $_POST['minPrice'] : $minPrice = 0;
+    (!empty($_POST['maxPrice'])) ? $maxPrice = $_POST['maxPrice'] : $maxPrice = 1_000_000_000;
+
+    (!empty($_POST['minYear'])) ? $minYear = $_POST['minYear'] : $minYear = 0;
+    (!empty($_POST['maxYear'])) ? $maxYear = $_POST['maxYear'] : $maxYear = 3000;
 
     if($search !== null) 
     {
         $stmt = $db -> query("  SELECT * FROM boats 
-                                WHERE boats.model LIKE '{$search}%'
-                                AND boats.length BETWEEN {$length[0]} AND {$length[1]}");
+                                WHERE boats.model LIKE '%{$search}%'
+                                AND boats.length BETWEEN '$minLength' AND '$maxLength'
+                                AND boats.price BETWEEN '$minPrice' AND '$maxPrice'
+                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'");
         $boats = $stmt -> fetchAll();
     }
     else 
     {
-        $stmt = $db -> query("SELECT * FROM boats");
+        $stmt = $db -> query("  SELECT * FROM boats
+                                WHERE boats.length BETWEEN '$minLength' AND '$maxLength'
+                                AND boats.price BETWEEN '$minPrice' AND '$maxPrice'
+                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'");
         $boats = $stmt -> fetchAll();
     }
 ?>
@@ -68,30 +80,34 @@
             <h4>Filters</h4>
             <form action="" method="post" class="">
                 <div>
-                    <?= $length[0], $length[1] ?>
-                    <label for="length">Długość</label>
-                    <label>
-                        Do 5m
-                        <input type="checkbox" name="length[]" value="0,5">
-                    </label>
-                    <label>
-                        od 5m do 10m
-                        <input type="checkbox" name="length[]" value="5,10">
-                    </label>
-                    <label>
-                        od 10m do 15m
-                        <input type="checkbox" name="length[]" value="10,15">
-                    </label>
-                    <label>
-                        od 15m do 20m
-                        <input type="checkbox" name="length[]" value="15,20">
-                    </label>
-                    <label>
-                        Ponad 20m
-                        <input type="checkbox" name="length[]" value="20,100">
-                    </label>
+                    <div>
+                        <p>Cena</p>
+                        <input type="text" name="minPrice" id="minPrice" placeholder="Min." pattern="\d*">
+                        <input type="text" name="maxPrice" id="maxPrice" placeholder="Maks." pattern="\d*">
+                    </div>
+                    <div>
+                        <p>Długość</p>
+                        <input type="text" name="minLength" id="minLength" placeholder="Min." pattern="\d*">
+                        <input type="text" name="maxLength" id="maxLength" placeholder="Maks." pattern="\d*">
+                    </div>
+                    <div>
+                        <p>Rocznik</p>
+                        <input type="text" name="minYear" id="minYear" placeholder="Min." pattern="\d*">
+                        <input type="text" name="maxYear" id="maxYear" placeholder="Maks." pattern="\d*">
+                    </div>
+                    <div>
+                        <p>Rodzaj łodzi</p>
+                        <input type="radio" name="boatType" id="engineBoat" value="engine_boat">
+                        <label for="engineBoat">Łódź motorowa</label>
+                        <input type="radio" name="boatType" id="sailingBoat" value="sailing_boat">
+                        <label for="sailingBoat">Łódź żaglowa</label>
+                        <input type="radio" name="boatType" id="rowingBoat" value="rowing_boat">
+                        <label for="rowingBoat">Łódź wiosłowa</label>
+                    </div>
+                    <div>
+                        <input type="submit" value="Zastosuj">
+                    </div>
                 </div>
-                <input type="submit" value="Zastosuj">
             </form>
         </div>
 
@@ -166,7 +182,7 @@
                 <!-- Dałem, żeby nie wpisywać za każdym razem -->
                 <a href="./PHP/admin_panel.php">ADMIN</a>
             </div>
-            
+            <?= var_dump($minLength, $maxLength, $minPrice, $maxPrice); ?>
         </div>
     </div>
 </body>

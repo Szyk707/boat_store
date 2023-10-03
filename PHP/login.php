@@ -62,6 +62,7 @@
             </div>
         </form>
         <a href="./register.php">Zarejestruj się</a>
+        <a href="../index.php">Powrót</a>
     </div>
 </body>
 </html>

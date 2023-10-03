@@ -42,6 +42,7 @@
             </div>
             <input type="submit" value="Zarejestruj">
         </form>
+        <a href="../index.php">Powrót</a>
     </div>
 </body>
 </html>
