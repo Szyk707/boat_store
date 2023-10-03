@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 02, 2023 at 07:09 PM
+-- Host: 127.0.0.1
+-- Generation Time: Oct 03, 2023 at 02:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -145,8 +145,18 @@ CREATE TABLE `orders_components` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(35) NOT NULL,
-  `password` varchar(25) NOT NULL
+  `password` varchar(25) NOT NULL,
+  `permission` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `permission`) VALUES
+(1, 'dundon@gmail.com', 'password', 1),
+(2, 'dundon2@gmail.com', 'password', 0),
+(3, 'sus@gmail.com', 'password', 0);
 
 --
 -- Indexes for dumped tables
@@ -244,7 +254,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
