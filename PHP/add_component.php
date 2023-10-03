@@ -1,6 +1,13 @@
 <?php
     session_start();
 
+    $permission = $_SESSION['permission'] ?? null;
+
+    if($permission == null || $permission == 0)
+    {
+        header("Location: ../index.php");
+    }
+
     $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
 
     $componentName = $_POST['componentName'] ?? null;

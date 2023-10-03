@@ -3,6 +3,8 @@
 
     $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
 
+    $email = $_SESSION['email'] ?? null;
+
     $search = $_GET['search'] ?? null;
 
     $length = $_POST['length[]'] ?? [0, 100];
@@ -49,8 +51,12 @@
                 <button type="submit" class="search_icon"><img src="./images/search_icon.svg" alt="search"></button>
             </form>
             <a href="#about_us" class="menu">O nas</a>
-            <a href="" class="menu">Kontakt</a>
-            <a href="" class="menu">Zaloguj</a>
+            <a href="#contact" class="menu">Kontakt</a>
+            <?php if($email == null): ?>
+                <a href="./PHP/login.php" class="menu">Zaloguj</a>
+            <?php elseif($email != null): ?>
+                <a href="./PHP/logout.php" class="menu">Wyloguj</a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -149,7 +155,14 @@
             
 
 
-            <div class="footer">
+            <div class="footer" id="contact">
+                <h3>Kontakt</h3>
+                <div>
+                    <span>E-mail: contact@boat-store.com</span>
+                </div>
+                <div>
+                    <span>Numer Telefonu: +48 000 000 000</span>
+                </div>
                 <!-- Dałem, żeby nie wpisywać za każdym razem -->
                 <a href="./PHP/admin_panel.php">ADMIN</a>
             </div>

@@ -1,11 +1,12 @@
 <?php
     session_start();
 
-    // $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
-    // if(!$isLoggedIn)
-    // {
-    //     header("Location: ./index.php");
-    // }
+    $permission = $_SESSION['permission'] ?? null;
+
+    if($permission == null || $permission == 0)
+    {
+        header("Location: ../index.php");
+    }
 
     $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
     

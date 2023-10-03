@@ -103,7 +103,6 @@ h4 {
     color: black;
 }
 
-
 .middle {
     display: flex;
     justify-content: center;
@@ -133,6 +132,7 @@ h4 {
     width: 1vw;
     background: none;
     border: none;
+    margin-top: 0.5vh;
 }
 
 .small_btn:hover {
@@ -145,10 +145,13 @@ ul {
 
 .small_img {
     width: 5vw;
+    border-radius: 0.5vw;
+    border: 2px solid rgb(255, 255, 255);
 }
 
 .boat_img {
     width: 35vw;
+    height: 25vw;
     margin-top: 1vh;
 }
 
