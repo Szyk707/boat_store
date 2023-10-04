@@ -200,9 +200,11 @@ h4 {
     background-color: #2f3e46;
 }
 h3 {
-    margin: 1em;
+    text-align: center;
+    font-size: 2rem;
     color: white;
     width: 100%;
+    margin-top: 1.5vh;
 }
 .about_us_boat {
     object-fit: cover;
@@ -271,4 +273,17 @@ h3 {
     background-color: #2f3e46;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.kontakt {
+    color: beige;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+
+}
+
+.b {
+    font-weight: bold;
 }

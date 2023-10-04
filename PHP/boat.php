@@ -33,9 +33,9 @@
                 <input type="text" name="search" id="search" class="search_input" placeholder="Wyszukaj...">
                 <button type="submit" class="search_icon"><img src="../images/search_icon.svg" alt="search"></button>
             </form>
-            <a href="../index.php#about_us" class="menu">O nas</a>
-            <a href="" class="menu">Kontakt</a>
-            <a href="" class="menu">Zaloguj</a>
+            <a href="#description" class="menu">Opis</a>
+            <a href="#contact" class="menu">Kontakt</a>
+            <a href="./login.php" class="menu">Zaloguj</a>
         </div>
 
     </div>
@@ -55,12 +55,8 @@
                 <?php endforeach; ?>
             </ul>
         </div>
-        <div>
-            <a href="#description" class="quick_scroll">Opis</a>
-            <a href="#specification" class="quick_scroll">Specyfikacja</a>
-        </div>
-        <div class="description">
-            <h3  id="description">OPIS</h3>
+        <div class="description" id="description">
+            <h3>OPIS</h3>
             <p class="desc"><?= $boat['description'] ?></p>
         </div>
         <div class="stats" id="specification">
@@ -92,7 +88,13 @@
         </div>
                 
         <div class="footer">
-            <p>Skontaktuj się z nami</p>
+            <h3 id="contact">Kontakt</h3>
+                <div class="kontakt">
+                    <span class="b">E-mail: </span><span class="">contact@boat-store.com</span>
+                </div>
+                <div class="kontakt">
+                    <span class="b">Numer Telefonu: </span><span class=""> +48 000 000 000</span>
+                </div>
         </div>
     </div>  
 </body>

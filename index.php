@@ -22,7 +22,8 @@
                                 WHERE boats.model LIKE '%{$search}%'
                                 AND boats.length BETWEEN '$minLength' AND '$maxLength'
                                 AND boats.price BETWEEN '$minPrice' AND '$maxPrice'
-                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'");
+                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'
+                                ");
         $boats = $stmt -> fetchAll();
     }
     else 
@@ -30,7 +31,8 @@
         $stmt = $db -> query("  SELECT * FROM boats
                                 WHERE boats.length BETWEEN '$minLength' AND '$maxLength'
                                 AND boats.price BETWEEN '$minPrice' AND '$maxPrice'
-                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'");
+                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'
+                                ");
         $boats = $stmt -> fetchAll();
     }
 ?>
@@ -58,7 +60,7 @@
         <a href="index.php" class="title">Boat Store</a>
 
         <div class="navbar">
-            <form action="" method="get" class="search">
+            <form action="./index.php" method="get" class="search">
                 <input type="text" name="search" id="search" class="search_input" placeholder="Wyszukaj...">
                 <button type="submit" class="search_icon"><img src="./images/search_icon.svg" alt="search"></button>
             </form>
@@ -78,7 +80,7 @@
         
         <div class="side_bar">
             <h4>Filters</h4>
-            <form action="" method="post" class="">
+            <form action="./index.php" method="post" class="">
                 <div>
                     <div>
                         <p>Cena</p>
@@ -92,10 +94,10 @@
                     </div>
                     <div>
                         <p>Rocznik</p>
-                        <input type="text" name="minYear" id="minYear" placeholder="Min." pattern="\d*">
-                        <input type="text" name="maxYear" id="maxYear" placeholder="Maks." pattern="\d*">
+                        <input type="text" name="minYear" id="minYear" placeholder="Od" pattern="\d*">
+                        <input type="text" name="maxYear" id="maxYear" placeholder="Do" pattern="\d*">
                     </div>
-                    <div>
+                    <!-- <div>
                         <p>Rodzaj łodzi</p>
                         <input type="radio" name="boatType" id="engineBoat" value="engine_boat">
                         <label for="engineBoat">Łódź motorowa</label>
@@ -103,7 +105,7 @@
                         <label for="sailingBoat">Łódź żaglowa</label>
                         <input type="radio" name="boatType" id="rowingBoat" value="rowing_boat">
                         <label for="rowingBoat">Łódź wiosłowa</label>
-                    </div>
+                    </div> -->
                     <div>
                         <input type="submit" value="Zastosuj">
                     </div>
@@ -173,16 +175,14 @@
 
             <div class="footer" id="contact">
                 <h3>Kontakt</h3>
-                <div>
-                    <span>E-mail: contact@boat-store.com</span>
+                <div class="kontakt">
+                    <span class="b">E-mail: </span><span class="">contact@boat-store.com</span>
                 </div>
-                <div>
-                    <span>Numer Telefonu: +48 000 000 000</span>
+                <div class="kontakt">
+                    <span class="b">Numer Telefonu: </span><span class=""> +48 000 000 000</span>
                 </div>
-                <!-- Dałem, żeby nie wpisywać za każdym razem -->
-                <a href="./PHP/admin_panel.php">ADMIN</a>
+             
             </div>
-            <?= var_dump($minLength, $maxLength, $minPrice, $maxPrice); ?>
         </div>
     </div>
 </body>
