@@ -17,6 +17,9 @@
     $boatWidth = (float) $_POST['boatWidth'] ?? "";
     $boatEngine = $_POST['boatEngine'] ?? "";
     $horsePower = (int) $_POST['horsePower'] ?? "";
+    $fuel = $_POST['fuel'] ?? "";
+    $mainImg = $_POST['mainImg'] ?? "";
+    $description = $_POST['description'] ?? "";
     $boatCategory = $_POST['boatCategory'] ?? null;
 
     if($boatModel !== "" &&
@@ -26,11 +29,14 @@
         $boatHeight !== "" &&
         $boatEngine !== "" &&
         $horsePower !== "" &&
+        $fuel !== "" &&
+        $mainImg !== "" &&
+        $description !== "" &&
         $boatCategory !== null
      )
     {
         $db->query("INSERT INTO boats 
-        VALUES(null, '$boatModel', '$boatPrice', '$boatLength', '$boatHeight', '$boatWidth', '$boatCategory')"
+        VALUES(null, '$boatModel', '$boatPrice', '$boatLength', '$boatHeight', '$boatWidth', '$boatCategory', '$boatEngine', '$fuel', '$horsePower', '$mainImg', '$description')"
         );
         $_SESSION['submitError'] = null;
         header("Location: ./admin_panel.php");

@@ -18,7 +18,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ATMIN</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -66,10 +67,28 @@
                 <input type="radio" name="boatCategory" id="engineBoat" value="engine_boat">
             </div>
             <div>
+                <label for="gas">Benzyna </label>
+                <input type="radio" name="fuel" id="gas" value="gas">
+                <label for="diesel">Diesel </label>
+                <input type="radio" name="fuel" id="diesel" value="diesel">
+                <label for="electric">Prąd </label>
+                <input type="radio" name="fuel" id="electric" value="electric">
+                <label for="other">Inne </label>
+                <input type="radio" name="fuel" id="other" value="other">
+            </div>
+            <div>
+                <label for="mainImg">Ścieżka do obrazu: </label>
+                <input type="text" name="mainImg" id="mainImg">
+            </div>
+            <div>
+                <label for="description">Opis: </label>
+                <input type="text" name="description" id="description">
+            </div>
+            <div>
                 <input type="submit" value="Dodaj">
             </div>
         </form>
-        <form action="add_component.php" method="post">
+        <!-- <form action="add_component.php" method="post">
             <h2>Dodaj Komponent</h2>
             <div>
                 <label for="componentName">Nazwa</label>
@@ -88,7 +107,7 @@
             <div>
                 <input type="submit" value="Dodaj">
             </div>
-        </form>
+        </form> -->
         <div>
             <a href="../index.php">WRÓĆ</a>
         </div>
