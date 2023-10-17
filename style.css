@@ -86,7 +86,6 @@ h4 {
 .search_icon {
     background: none;
     border: none;
-    width: 1vw;
 }
 
 .search_icon:hover {
@@ -117,14 +116,6 @@ h4 {
     position: relative;
     top: 10vh;
     width: 100%;
-}
-
-.side_bar {
-    width: 15%;
-    height: 90vh;
-    background-color: whitesmoke;
-    position: sticky;
-    top: 10vh;
 }
 
 .middle {
@@ -252,7 +243,7 @@ h3 {
     margin-left: 10vw ;
     width: 14vw;
     height: auto;
-    outline: 2px solid rgb(91, 152, 245);
+    outline: 2px solid rgb(81, 81, 250);
     border-radius: 5px;
 }
 
@@ -263,7 +254,7 @@ h3 {
     margin-left: auto;
     margin-right: 10vw;
     width: 14vw;
-    border: solid 2px rgb(91, 152, 245);
+    border: solid 2px rgb(81, 81, 250);
     border-radius: 5px;
 }
 
@@ -287,3 +278,57 @@ h3 {
 .b {
     font-weight: bold;
 }   
+
+.side_bar {
+    display: inline;
+    width: 15%;
+    height: 90vh;
+    background-color: whitesmoke;
+    position: sticky;
+    top: 10vh;
+    padding-left: 0.7vw;
+    padding-right: 0.7vw;
+}
+
+.filter_input {
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 6vw;
+    height: 1.9vh;
+    text-align: center;
+    margin: 0.4vw;
+}
+
+.filter_input::placeholder {
+    text-align: center;
+}
+
+.filter_header {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: start;
+    font-size: 2vh;
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.filters_submit {
+    border: 1px solid gray;
+    background-color: rgb(81, 81, 250);
+    color: azure;
+    border-radius: 20px;
+    width: 8vw;
+    height: 2.5vh;
+    font-size: 1.7vh;
+}
+
+.filters_submit:hover {
+    cursor: pointer;
+    background-color: rgb(33, 33, 167);
+}
+
+.center {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}

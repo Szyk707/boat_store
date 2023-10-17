@@ -56,13 +56,13 @@
     <img src="images/background_sea.png" alt="" class="background_sea">
 
     <div class="nav">
-        <img src="images/captain.png" alt="captain" class="logo">
+        <img src="images/anchor.png" alt="captain" class="logo">
         <a href="index.php" class="title">Boat Store</a>
 
         <div class="navbar">
-            <form action="./index.php" method="get" class="search">
+            <form action="./index.php" method="get" class="search" autocomplete="off">
                 <input type="text" name="search" id="search" class="search_input" placeholder="Wyszukaj...">
-                <button type="submit" class="search_icon"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"/></svg></button>
+                <button type="submit" class="search_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" height="45" width="50"><path d="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"/></svg></button>
             </form>
             <a href="#about_us" class="menu">O nas</a>
             <a href="#contact" class="menu">Kontakt</a>
@@ -79,23 +79,23 @@
     <div class="content">
         
         <div class="side_bar">
-            <h4>Filters</h4>
-            <form action="./index.php" method="post" class="">
+            <h4>Filtry</h4>
+            <form action="./index.php" method="post" class="filters" autocomplete="off">
                 <div>
                     <div>
-                        <p>Cena</p>
-                        <input type="text" name="minPrice" id="minPrice" placeholder="Min." pattern="\d*">
-                        <input type="text" name="maxPrice" id="maxPrice" placeholder="Maks." pattern="\d*">
+                        <p class="filter_header">Cena</p>
+                        <input type="text" name="minPrice" id="minPrice" placeholder="Min." pattern="\d*" class="filter_input">
+                        <input type="text" name="maxPrice" id="maxPrice" placeholder="Maks." pattern="\d*" class="filter_input">
                     </div>
                     <div>
-                        <p>Długość</p>
-                        <input type="text" name="minLength" id="minLength" placeholder="Min." pattern="\d*">
-                        <input type="text" name="maxLength" id="maxLength" placeholder="Maks." pattern="\d*">
+                        <p class="filter_header">Długość</p>
+                        <input type="text" name="minLength" id="minLength" placeholder="Min." pattern="\d*" class="filter_input">
+                        <input type="text" name="maxLength" id="maxLength" placeholder=" Maks." pattern="\d*" class="filter_input">
                     </div>
                     <div>
-                        <p>Rocznik</p>
-                        <input type="text" name="minYear" id="minYear" placeholder="Od" pattern="\d*">
-                        <input type="text" name="maxYear" id="maxYear" placeholder="Do" pattern="\d*">
+                        <p class="filter_header">Rocznik</p>
+                        <input type="text" name="minYear" id="minYear" placeholder="Od" pattern="\d*" class="filter_input">
+                        <input type="text" name="maxYear" id="maxYear" placeholder="Do" pattern="\d*" class="filter_input">
                     </div>
                     <!-- <div>
                         <p>Rodzaj łodzi</p>
@@ -106,8 +106,8 @@
                         <input type="radio" name="boatType" id="rowingBoat" value="rowing_boat">
                         <label for="rowingBoat">Łódź wiosłowa</label>
                     </div> -->
-                    <div>
-                        <input type="submit" value="Zastosuj">
+                    <div class="center">
+                        <input type="submit" value="Zastosuj" class="filters_submit">
                     </div>
                 </div>
             </form>
