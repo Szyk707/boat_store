@@ -28,12 +28,10 @@ body {
     
 }
 
-h4 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0; 
-    margin-left: 0.5em;
-    padding: 0.3em;
+.test_div {
     font-size: 1.6vw;
+    padding: 0.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .nav { 
@@ -105,6 +103,7 @@ h4 {
     width: 80%;
     height: 40%;
     transform: translateY(50%);
+    font-size: 1vw;
 }
 
 .menu:hover {
@@ -196,6 +195,7 @@ h3 {
     color: white;
     width: 100%;
     margin-top: 1.5vh;
+    margin-bottom: 2rem;
 }
 .about_us_boat {
     object-fit: cover;
@@ -209,14 +209,17 @@ h3 {
     color: white;
     width: 50%;
     margin-left: 1em;
+    font-size: 1.5rem;
+    text-align: justify;
 }
 
 .description {
     float: right;
     color: white;
     width: 50%;
-    padding: 2em
-
+    padding: 2em;
+    font-size: 1.5rem;
+    text-align: justify;
 }
 
 .olek, .szymon {
@@ -225,16 +228,6 @@ h3 {
     margin-top: 1em;
     width: 100%;
     background-color: #2f3e46;
-}
-
-.full_name_right {
-    font-size: 1.6vw;
-    text-align: end;
-}
-
-.full_name_left {
-    font-size: 1.6vw;
-    text-align: start;
 }
 
 .rob {
@@ -292,11 +285,12 @@ h3 {
 
 .filter_input {
     border: 1px solid gray;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 6vw;
-    height: 1.9vh;
+    height: 1.7rem;
     text-align: center;
     margin: 0.4vw;
+    font-size: 1vw;
 }
 
 .filter_input::placeholder {
@@ -318,7 +312,7 @@ h3 {
     color: azure;
     border-radius: 20px;
     width: 8vw;
-    height: 2.5vh;
+    height: 2rem;
     font-size: 1.7vh;
 }
 

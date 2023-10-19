@@ -5,7 +5,8 @@
 
     $email = $_SESSION['email'] ?? null;
 
-    $search = $_GET['search'] ?? null;
+    $search = $_GET['search'] ?? $_SESSION['search'] ?? null;
+    (!empty($_SESSION['search'])) ? $_SESSION['search'] = null : $_SESSION['search'] = $search;
 
     (!empty($_POST['minLength'])) ? $minLength = $_POST['minLength'] : $minLength = 0;
     (!empty($_POST['maxLength'])) ? $maxLength = $_POST['maxLength'] : $maxLength = 1_000;
@@ -14,27 +15,16 @@
     (!empty($_POST['maxPrice'])) ? $maxPrice = $_POST['maxPrice'] : $maxPrice = 1_000_000_000;
 
     (!empty($_POST['minYear'])) ? $minYear = $_POST['minYear'] : $minYear = 0;
-    (!empty($_POST['maxYear'])) ? $maxYear = $_POST['maxYear'] : $maxYear = 3000;
+    (!empty($_POST['maxYear'])) ? $maxYear = $_POST['maxYear'] : $maxYear = 3_000;
 
-    if($search !== null) 
-    {
-        $stmt = $db -> query("  SELECT * FROM boats 
-                                WHERE boats.model LIKE '%{$search}%'
-                                AND boats.length BETWEEN '$minLength' AND '$maxLength'
-                                AND boats.price BETWEEN '$minPrice' AND '$maxPrice'
-                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'
-                                ");
-        $boats = $stmt -> fetchAll();
-    }
-    else 
-    {
-        $stmt = $db -> query("  SELECT * FROM boats
-                                WHERE boats.length BETWEEN '$minLength' AND '$maxLength'
-                                AND boats.price BETWEEN '$minPrice' AND '$maxPrice'
-                                AND boats.production_year BETWEEN '$minYear' AND '$maxYear'
-                                ");
-        $boats = $stmt -> fetchAll();
-    }
+
+    $stmt = $db -> query("  SELECT * FROM boats 
+                            WHERE boats.model LIKE '%{$search}%'
+                            AND boats.length BETWEEN '$minLength' AND '$maxLength'
+                            AND boats.price BETWEEN '$minPrice' AND '$maxPrice'
+                            AND boats.production_year BETWEEN '$minYear' AND '$maxYear'
+                            ");
+    $boats = $stmt -> fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +39,7 @@
         window.history.replaceState( null, null, window.location.href );
     }
     </script>
-
+    <script src="./JS/boat_titles.js" defer></script>
 </head>
 <body>
 
@@ -70,6 +60,9 @@
                 <a href="./PHP/login.php" class="menu">Zaloguj</a>
             <?php elseif($email != null): ?>
                 <a href="./PHP/logout.php" class="menu">Wyloguj</a>
+                <?php if($_SESSION['permission'] == 1): ?>
+                    <a href="./PHP/admin_panel.php" class="menu">Admin</a>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>
@@ -79,7 +72,9 @@
     <div class="content">
         
         <div class="side_bar">
-            <h4>Filtry</h4>
+            <div>
+                <h4>Filtry</h4>
+            </div>
             <form action="./index.php" method="post" class="filters" autocomplete="off">
                 <div>
                     <div>
@@ -120,7 +115,9 @@
                 <?php foreach($boats as $index => $b): ?>
                     <a href="./PHP/boat.php?id=<?= $b['id'] ?>" class="boat_card">
                         <div>
-                            <h4><?= $b['model'] ?></h4>
+                            <div class="test_div">
+                                <h4><?= $b['model'] ?></h4>
+                            </div>
                             <img src="<?= $b['main_img_path'] ?>" alt="łódź" class="boat_card_img">
                             <div class="boat_info_parent">
                                 <span class="boat_info">Cena: </span><span class="boat_info"><?= $b['price'] ?> zł</span>
@@ -146,7 +143,7 @@
                         7 Understand the importance of silence.</span>
                 </div>
                 <div class="olek">
-                    <h3 class="full_name_right">Aleksander Michalski</h3>
+                    <h3 class="name">Aleksander Michalski</h3>
                     <span class="description">1 Even though you're alone, value other people in your life. ...
                         2 Be in touch with your own power. ...
                         3 Be a silent leader. ...
@@ -157,7 +154,7 @@
                     <img src="images/rob2.png" alt="" class="rob">
                 </div>
                 <div class="szymon">
-                    <h3 class="full_name_left">Szymon Kołbus</h3>
+                    <h3 class="name">Szymon Kołbus</h3>
                     <img src="images/ryan2.png" alt="" class="ryan">
                     <span class="description">1 Even though you're alone, value other people in your life. ...
                         2 Be in touch with your own power. ...
