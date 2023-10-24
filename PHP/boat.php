@@ -3,6 +3,8 @@
 
     $boat_id = $_GET['id'] ?? null;
 
+    $email = $_SESSION['email'] ?? null;
+
     $db = new PDO('mysql:host=localhost;dbname=boat_store', 'root', '');
 
     $stmt = $db -> query("SELECT DISTINCT * FROM boats WHERE boats.id = {$boat_id}");
@@ -29,13 +31,20 @@
         <a href="../index.php" class="title">Boat Store</a>
 
         <div class="navbar">
-            <form action="../index.php" method="get" class="search">
+        <form action="./index.php" method="get" class="search" autocomplete="off">
                 <input type="text" name="search" id="search" class="search_input" placeholder="Wyszukaj...">
-                <button type="submit" class="search_icon"><img src="../images/search_icon.svg" alt="search"></button>
+                <button type="submit" class="search_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" height="45" width="50"><path d="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"/></svg></button>
             </form>
-            <a href="#description" class="menu">Opis</a>
+            <a href="#about_us" class="menu">O nas</a>
             <a href="#contact" class="menu">Kontakt</a>
-            <a href="./login.php" class="menu">Zaloguj</a>
+            <?php if($email == null): ?>
+                <a href="./PHP/login.php" class="menu">Zaloguj</a>
+            <?php elseif($email != null): ?>
+                <a href="./PHP/logout.php" class="menu">Wyloguj</a>
+                <?php if($_SESSION['permission'] == 1): ?>
+                    <a href="./admin_panel.php" class="menu">Admin</a>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
 
     </div>

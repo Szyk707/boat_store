@@ -9,13 +9,13 @@
     (!empty($_SESSION['search'])) ? $_SESSION['search'] = null : $_SESSION['search'] = $search;
 
     (!empty($_POST['minLength'])) ? $minLength = $_POST['minLength'] : $minLength = 0;
-    (!empty($_POST['maxLength'])) ? $maxLength = $_POST['maxLength'] : $maxLength = 1_000;
+    (!empty($_POST['maxLength'])) ? $maxLength = $_POST['maxLength'] : $maxLength = 1_000_000_000;
 
     (!empty($_POST['minPrice'])) ? $minPrice = $_POST['minPrice'] : $minPrice = 0;
     (!empty($_POST['maxPrice'])) ? $maxPrice = $_POST['maxPrice'] : $maxPrice = 1_000_000_000;
 
     (!empty($_POST['minYear'])) ? $minYear = $_POST['minYear'] : $minYear = 0;
-    (!empty($_POST['maxYear'])) ? $maxYear = $_POST['maxYear'] : $maxYear = 3_000;
+    (!empty($_POST['maxYear'])) ? $maxYear = $_POST['maxYear'] : $maxYear = 3_000_000_000;
 
 
     $stmt = $db -> query("  SELECT * FROM boats 
@@ -73,7 +73,7 @@
         
         <div class="side_bar">
             <div>
-                <h4>Filtry</h4>
+                <h4 class="filters_title">Filtry</h4>
             </div>
             <form action="./index.php" method="post" class="filters" autocomplete="off">
                 <div>
@@ -92,15 +92,6 @@
                         <input type="text" name="minYear" id="minYear" placeholder="Od" pattern="\d*" class="filter_input">
                         <input type="text" name="maxYear" id="maxYear" placeholder="Do" pattern="\d*" class="filter_input">
                     </div>
-                    <!-- <div>
-                        <p>Rodzaj łodzi</p>
-                        <input type="radio" name="boatType" id="engineBoat" value="engine_boat">
-                        <label for="engineBoat">Łódź motorowa</label>
-                        <input type="radio" name="boatType" id="sailingBoat" value="sailing_boat">
-                        <label for="sailingBoat">Łódź żaglowa</label>
-                        <input type="radio" name="boatType" id="rowingBoat" value="rowing_boat">
-                        <label for="rowingBoat">Łódź wiosłowa</label>
-                    </div> -->
                     <div class="center">
                         <input type="submit" value="Zastosuj" class="filters_submit">
                     </div>
