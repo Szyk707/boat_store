@@ -27,7 +27,7 @@
     <img src="../images/background_sea.png" alt="" class="background_sea">
 
     <div class="nav">
-        <img src="../images/captain.png" alt="captain" class="logo">
+        <img src="../images/anchor.png" alt="captain" class="logo">
         <a href="../index.php" class="title">Boat Store</a>
 
         <div class="navbar">
@@ -38,9 +38,9 @@
             <a href="#about_us" class="menu">O nas</a>
             <a href="#contact" class="menu">Kontakt</a>
             <?php if($email == null): ?>
-                <a href="./PHP/login.php" class="menu">Zaloguj</a>
+                <a href="./login.php" class="menu">Zaloguj</a>
             <?php elseif($email != null): ?>
-                <a href="./PHP/logout.php" class="menu">Wyloguj</a>
+                <a href="./logout.php" class="menu">Wyloguj</a>
                 <?php if($_SESSION['permission'] == 1): ?>
                     <a href="./admin_panel.php" class="menu">Admin</a>
                 <?php endif; ?>

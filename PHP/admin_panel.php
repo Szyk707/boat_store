@@ -22,7 +22,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATMIN</title>
+    <title>ADMIN</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <label for="boatPrice" class="filter_header">Cena Łodzi</label>
-                        <input type="text" name="boatPrice" id="boatPrice" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off">
+                        <input type="text" name="boatPrice" id="boatPrice" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off">zł
                     </div>
                     <div>
                         <label for="boatYear" class="filter_header">Rok Produkcji</label>
@@ -48,15 +48,15 @@
                     </div>
                     <div>
                         <label for="boatLength" class="filter_header">Długość Łodzi</label>
-                        <input type="text" name="boatLength" id="boatLength" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off"> 
+                        <input type="text" name="boatLength" id="boatLength" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off">m
                     </div>
                     <div>
                         <label for="boatWidth" class="filter_header">Szerokość Łodzi</label>
-                        <input type="text" name="boatWidth" id="boatWidth" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off">
+                        <input type="text" name="boatWidth" id="boatWidth" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off">m
                     </div>
                     <div>
                         <label for="boatHeight" class="filter_header">Wysokość Łodzi</label>
-                        <input type="text" name="boatHeight" id="boatHeight" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off">
+                        <input type="text" name="boatHeight" id="boatHeight" pattern="\d*(\.\d{0,2})?$" class="filter_input width_large" autocomplete="off">m
                     </div>
                     <div>
                         <label for="boatEngine" class="filter_header">Silnik</label>
@@ -64,7 +64,7 @@
                     </div>
                     <div>
                         <label for="horsePower" class="filter_header">Moc Silnika</label>
-                        <input type="text" name="horsePower" id="horsePower" pattern="\d*" class="filter_input width_large" autocomplete="off">
+                        <input type="text" name="horsePower" id="horsePower" pattern="\d*" class="filter_input width_large" autocomplete="off">KM
                     </div>
                     <div>
                         <label for="boatCategory" class="filter_header">Rodzaj Łodzi</label>

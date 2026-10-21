@@ -63,6 +63,10 @@ body {
     font-size: 6vh;
     text-decoration: none;
     color: rgb(81, 81, 250);
+    border: 0;
+    background: none;
+    cursor: pointer;
+    padding: 0;
 }
 
 .navbar {
@@ -151,6 +155,7 @@ body {
 
 .boat_card:hover {
     background-color: gainsboro;
+    outline: #5151FAFF 4px solid;
 }
 
 .boat_card_img {
@@ -202,6 +207,7 @@ h3 {
     float: left;
     margin-left: 1em ;
     width: 40%;
+    border-radius: 10px;
 }
 
 .about_us_description {
@@ -231,22 +237,23 @@ h3 {
 }
 
 .rob {
-    object-fit: scale-down;
+    object-fit: fill;
     float: right;
     margin-left: 10vw ;
     width: 14vw;
-    height: auto;
+    height: 14vw;
     outline: 2px solid rgb(81, 81, 250);
     border-radius: 5px;
 }
 
 
 .ryan {
-    object-fit: scale-down;
+    object-fit: fill;
     float: left;
     margin-left: auto;
     margin-right: 10vw;
     width: 14vw;
+    height: 14vw;
     border: solid 2px rgb(81, 81, 250);
     border-radius: 5px;
 }
